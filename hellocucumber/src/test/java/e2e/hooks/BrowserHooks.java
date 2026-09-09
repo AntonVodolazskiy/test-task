@@ -1,16 +1,17 @@
-package cadeaubon;
+package e2e.hooks;
 
+import e2e.support.WebDriverManager;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
-public class TestHooks {
+public class BrowserHooks {
     @Before
     public void startBrowser() {
-        DriverManager.startDriver();
+        WebDriverManager.startDriver();
     }
 
     @After
     public void closeBrowser() {
-        DriverManager.quitDriver();
+        WebDriverManager.quitDriver();
     }
 }

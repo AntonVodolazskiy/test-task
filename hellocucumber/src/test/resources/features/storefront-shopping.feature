@@ -1,4 +1,4 @@
-Feature: Testing cadeaubon.nl website
+Feature: Storefront shopping flow
 
   Scenario: Check Autocomplete Functionality
     Given I am on the cadeaubon.nl website

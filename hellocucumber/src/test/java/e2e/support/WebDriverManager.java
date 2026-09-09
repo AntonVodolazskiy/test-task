@@ -1,16 +1,16 @@
-package cadeaubon;
+package e2e.support;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-final class DriverManager {
+public final class WebDriverManager {
     private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
 
-    private DriverManager() {
+    private WebDriverManager() {
     }
 
-    static void startDriver() {
+    public static void startDriver() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized", "--disable-popup-blocking");
 
@@ -21,7 +21,7 @@ final class DriverManager {
         DRIVER.set(new ChromeDriver(options));
     }
 
-    static WebDriver getDriver() {
+    public static WebDriver getDriver() {
         WebDriver driver = DRIVER.get();
         if (driver == null) {
             throw new IllegalStateException("WebDriver has not been started for this scenario.");
@@ -29,7 +29,7 @@ final class DriverManager {
         return driver;
     }
 
-    static void quitDriver() {
+    public static void quitDriver() {
         WebDriver driver = DRIVER.get();
         if (driver != null) {
             driver.quit();

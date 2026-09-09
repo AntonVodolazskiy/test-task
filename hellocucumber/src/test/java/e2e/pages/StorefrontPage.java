@@ -1,4 +1,4 @@
-package cadeaubon.pages;
+package e2e.pages;
 
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
@@ -10,16 +10,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-public class HomePage {
+public class StorefrontPage {
     private static final Duration TIMEOUT = Duration.ofSeconds(10);
     private static final By COOKIE_ACCEPT_BUTTON = By.id("CookieConsentIOAccept");
-        private static final By SEARCH_INPUT = By.xpath("//input[@type='search' or "
+    private static final By SEARCH_INPUT = By.xpath("//input[@type='search' or "
             + "contains(translate(@placeholder, 'ZOEKEN', 'zoeken'), 'zoek') or "
             + "contains(translate(@aria-label, 'ZOEKEN', 'zoeken'), 'zoek')]");
-        private static final By SEARCH_RESULTS = By.xpath("//a[.//img and "
+    private static final By SEARCH_RESULTS = By.xpath("//a[.//img and "
             + "(contains(@href, 'cadeau') or contains(@href, 'product'))]");
     private static final By DIGITAL_FORMAT = By.cssSelector("label[for='digital']");
-        private static final By ADD_TO_CART = By.xpath("//*[self::button or @role='button']"
+    private static final By ADD_TO_CART = By.xpath("//*[self::button or @role='button']"
             + "[contains(normalize-space(), 'winkelmandje') or contains(normalize-space(), 'Toevoegen')]");
     private static final By NAME_INPUT = By.cssSelector("input[name='name']");
     private static final By EMAIL_INPUT = By.cssSelector("input[name='email']");
@@ -36,7 +36,7 @@ public class HomePage {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
-    public HomePage(WebDriver driver) {
+    public StorefrontPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, TIMEOUT);
     }
@@ -44,8 +44,8 @@ public class HomePage {
     public void open(String url) {
         driver.get(url);
         wait.until(ExpectedConditions.jsReturnsValue("return document.readyState === 'complete'"));
-        Assertions.assertFalse(driver.getTitle().contains("Attention Required"),
-            "Cadeaubon.nl blocked the automated browser through Cloudflare.");
+        Assertions.assertFalse(String.valueOf(driver.getTitle()).contains("Attention Required"),
+                "The storefront blocked the automated browser through Cloudflare.");
     }
 
     public void acceptCookiesIfPresent() {
@@ -84,7 +84,7 @@ public class HomePage {
 
     public void assertCartIsOpen() {
         wait.until(ExpectedConditions.urlContains("winkelmandje"));
-        Assertions.assertTrue(driver.getCurrentUrl().contains("winkelmandje"),
+        Assertions.assertTrue(String.valueOf(driver.getCurrentUrl()).contains("winkelmandje"),
                 "Expected the shopping-cart page to be open.");
     }
 
