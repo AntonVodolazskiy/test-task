@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/hellocucumber/hellocucumber.iml" filepath="$PROJECT_DIR$/hellocucumber/hellocucumber.iml" />
+      <module fileurl="file://$PROJECT_DIR$/storefront-e2e-tests/storefront-e2e-tests.iml" filepath="$PROJECT_DIR$/storefront-e2e-tests/storefront-e2e-tests.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/test-cadeaubon.iml" filepath="$PROJECT_DIR$/.idea/test-cadeaubon.iml" />
     </modules>
   </component>
